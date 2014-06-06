@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+</head>
+<!-- //TODO indentation -->
+<body>
+	<div th:fragment="userForm">						      
+		<table>
+			<tr>
+				<td>
+					<input type="hidden" th:field="*{id}"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="input-group">
+					  <span class="input-group-addon"></span>
+					  <input type="text" th:field="*{userName}" class="form-control" placeholder="Username"/>
+					</div>											
+				</td>
+		  		<td th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Name Error</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="input-group">
+					  <span class="input-group-addon"></span>
+					  <input type="text" th:field="*{name}" class="form-control" placeholder="Name"/>
+					</div>											
+				</td>
+				<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="input-group">
+					  <span class="input-group-addon"></span>
+					  <input type="text" th:field="*{surname}" class="form-control" placeholder="Surname"/>
+					</div>											
+				</td>
+				<td th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Name Error</td>											
+			</tr>
+			<tr>
+				<td>
+					<div class="input-group">
+					  <span class="input-group-addon"></span>
+					  <input type="text" th:field="*{phoneNumber}" class="form-control phone" placeholder="PhoneNumber"/>
+					</div>											
+				</td>											
+				<td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Name Error</td>											
+			</tr>																												
+		</table>
+	</div>
+</body>
+</html>

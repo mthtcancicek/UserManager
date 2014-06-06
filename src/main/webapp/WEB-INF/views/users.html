@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+</head>
+<!-- //TODO indentation -->
+<body>
+	<div th:fragment="userList">
+     <table class="table table-striped">                
+         <thead>
+         <tr>
+             <th>User Name</th>
+             <th>First Name</th>
+             <th>Last Name</th>
+             <th>PhoneNumber</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr th:each="item,status : ${users}">
+			 <td th:text="${item.userName}"></td>				
+             <td th:text="${item.name}"></td>
+             <td th:text="${item.surname}"></td>
+             <td th:text="${item.phoneNumber}"></td>
+             <td> 
+             	<table>
+              	<tr>
+              		<td>
+                         <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#updateModal"  
+                         th:onclick="'javascript:fillUpdateForm(\'' + ${item.id} + '\', \'' + ${item.userName} + '\',\'' + ${item.name} + '\',\'' + ${item.surname} + '\',\'' + ${item.phoneNumber} + '\');'">
+                         Update
+                         </button>
+              		</td>
+              		<td>
+					<form th:action="@{/user/delete}" id="user-delete-form" partialRendering="true" method="POST"> 
+						<input id="id" name="id" type="hidden" th:value="${item.id}"/>  
+						<input type="submit" value="Delete" class="btn btn-primary"/>
+                     </form>                      		
+              		</td>
+              	</tr>                    	
+             	</table>
+             </td>
+         </tr>
+         <tr>
+         	<td>
+	             <script>
+	             	$(document).ready(function() {
+		             	registerPartialRendering($("[id=user-delete-form]"));	             		
+	             	}
+	             	);
+	             </script>             
+         	</td>
+         </tr>
+         </tbody>
+     </table>  
+	</div>
+</body>
+</html>
