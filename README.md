@@ -5,7 +5,7 @@
 ## Basic Features
 
   Test Driven Design, Domain-Driven Design pattern.
-  Stores data in MongoDb. 
+  Stores data in MongoDB. 
   AJAX partial rendering and captcha validation.
   
 
